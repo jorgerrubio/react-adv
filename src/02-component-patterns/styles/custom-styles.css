@@ -1,0 +1,25 @@
+.bg-dark {
+    background-color: rgb(56, 56, 56);
+    box-shadow: 1px 1px 2.5px #eaeaea;
+}
+
+.text-white {
+    color: white;
+}
+
+.custom-text {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.custom-image {
+    border-radius: 1.25rem;
+    
+    padding: 0.625rem;
+    width: calc(100% - 1.25rem);
+}
+
+.custom-buttons button, .custom-buttons div {
+    border-color: white;
+    color: white;
+}
