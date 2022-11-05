@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { useProduct } from '../hooks/useProduct'
 import styles from '../styles/styles.module.css'
 import noImage from '../assets/no-image.jpg'
@@ -9,15 +10,8 @@ interface Product {
 }
 
 type ProductCardProps = {
+    children?: ReactElement | ReactElement[]
     product: Product
-}
-
-export const ProductImage = ({ img = '' }) => {
-    return <img className={styles.productImg} src={img ? img : noImage} alt="Product" />
-}
-
-export const ProductTitle = ({ title }: { title: string }) => {
-    return <span className={styles.productDescription}>{title}</span>
 }
 
 type ProductButtonsProps = {
@@ -40,14 +34,23 @@ export const ProductButtons = ({ counter, increaseBy }: ProductButtonsProps) => 
     )
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductImage = ({ img = '' }) => {
+    return <img className={styles.productImg} src={img ? img : noImage} alt="Product" />
+}
+
+export const ProductTitle = ({ title }: { title: string }) => {
+    return <span className={styles.productDescription}>{title}</span>
+}
+
+export const ProductCard = ({ children, product }: ProductCardProps) => {
     const { counter, increaseBy } = useProduct()
 
     return (
         <div className={styles.productCard}>
-            <ProductImage img={product.img} />
+            {children}
+            {/* <ProductImage img={product.img} />
             <ProductTitle title={product.title} />
-            <ProductButtons counter={counter} increaseBy={increaseBy} />
+            <ProductButtons counter={counter} increaseBy={increaseBy} /> */}
         </div>
     )
 }
