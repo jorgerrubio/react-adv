@@ -1,7 +1,7 @@
-import { createContext, ReactElement } from 'react'
+import { createContext } from 'react'
 import { useProduct } from '../hooks/useProduct'
 import styles from '../styles/styles.module.css'
-import { Product } from '../interfaces/product.interface'
+import { Product, ProductCardProps } from '../interfaces/product.interface'
 
 type ProductContextProps = {
     counter: number
@@ -11,10 +11,6 @@ type ProductContextProps = {
 export const ProductContext = createContext({} as ProductContextProps)
 const { Provider } = ProductContext
 
-type ProductCardProps = {
-    children?: ReactElement | ReactElement[]
-    product: Product
-}
 export const ProductCard = ({ children, product }: ProductCardProps) => {
     const { counter, increaseBy } = useProduct()
 
