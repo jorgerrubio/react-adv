@@ -1,42 +1,10 @@
 import { ProductCard, ProductButtons, ProductImage, ProductTitle } from '../components'
 import '../styles/custom-styles.css'
-import { Product } from '../interfaces/product.interface'
-import { useState } from 'react'
-import { OnchangeArgs } from '../components/ProductCard'
-
-const product1 = {
-    id: 1,
-    title: 'Coffee Mug - Card',
-    img: './coffee-mug.png'
-}
-
-const product2 = {
-    id: 2,
-    title: 'Coffee Mug - Meme',
-    img: './coffee-mug2.png'
-}
-
-const products: Product[] = [product1, product2]
-
-type ProductInCard = Product & {
-    count: number
-}
+import { products } from '../data/products'
+import { useShoppingCard } from '../hooks/useShoppingCard'
 
 export const ShoppingPage = () => {
-    const [shoppingCard, setShoppingCard] = useState<{ [key: string]: ProductInCard }>({})
-
-    const onProductCountChange = ({ count, product }: OnchangeArgs) => {
-        setShoppingCard((oldShoppingCard) => {
-            if (count === 0) {
-                const { [product.id]: toDelete, ...rest } = oldShoppingCard
-                return rest
-            }
-            return {
-                ...oldShoppingCard,
-                [product.id]: { ...product, count }
-            }
-        })
-    }
+    const { shoppingCard, onProductCountChange } = useShoppingCard()
 
     return (
         <div>
