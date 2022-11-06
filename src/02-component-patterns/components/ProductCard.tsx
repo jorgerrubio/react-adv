@@ -11,14 +11,22 @@ type ProductContextProps = {
 export const ProductContext = createContext({} as ProductContextProps)
 const { Provider } = ProductContext
 
+export type OnchangeArgs = {
+    count: number
+    product: Product
+}
+
 export type ProductCardProps = {
     children?: React.ReactElement | React.ReactElement[]
     className?: string
+    onChange?: (args: OnchangeArgs) => void
     product: Product
     style?: React.CSSProperties
+    value?: number
 }
-export const ProductCard = ({ children, className, product, style }: ProductCardProps) => {
-    const { counter, increaseBy } = useProduct()
+export const ProductCard = (props: ProductCardProps) => {
+    const { children, className, onChange, product, style, value } = props
+    const { counter, increaseBy } = useProduct({ onChange, product, value })
 
     return (
         <Provider value={{ counter, increaseBy, product }}>

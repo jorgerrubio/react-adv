@@ -23,3 +23,21 @@
     border-color: white;
     color: white;
 }
+
+.shopping-card {
+    border-left: 1px solid white;
+    bottom: 0;
+    padding: 0.625rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.shopping-card .buttons {
+    background: #444444;
+    bottom: -0.625rem;
+    left: 0;
+    position: absolute;
+    right: 0;
+    scale: .7;
+}
